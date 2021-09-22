@@ -1,0 +1,46 @@
+
+
+{% block content %}
+
+<h2>Вы действительно хотите удалить данную публикацию?</h2>
+<table>
+    <thead>
+        <th>
+            Заголовок
+        </th>
+        <th>
+            Дата публикации
+        </th>
+        <th>
+            Первые 50 символов статьи
+        </th>
+        <th>
+            Автор
+        </th>
+        <th>
+            Новость или статья
+        </th>
+    </thead>
+    <tr>
+        <td>
+            {{ post.title }}
+        </td>
+        <td>
+            {{ post.dateCreation|date:'M d Y' }}
+        </td>
+        <td>
+            {{ post.text|truncatechars:50 }}
+        </td>
+        <td>
+            {{ post.author }}
+        </td>
+        <td>
+            {{ post.categoryType }}
+        </td>
+    </tr>
+</table>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="подтвердить"></form>
+{% endblock content %}
